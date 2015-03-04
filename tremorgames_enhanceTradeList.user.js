@@ -64,7 +64,7 @@ function filterTextWorker(){
     console.log("change detected.", lastSearch, text);
     filter_by_title(text);
   }
-  if(interval_running) setTimeout(filterTextWorker, worker_interval);
+  if(interval_running) window.setTimeout(filterTextWorker, worker_interval);
 };
 
 function filter_by_title(_text, shouldHide){
@@ -137,7 +137,7 @@ function hide_not_owned(shouldHide){
 function with_status(message, func, args){
   console.log("status: " + message);
   status_div.html(message);
-  setTimeout(function(){
+  window.setTimeout(function(){
     console.log("apply call to", func, "with param", args);
    func.apply(null, args);
   }, 100);
@@ -167,7 +167,7 @@ txt_search.focusin(function(){
 txt_search.focusout(function(){
   console.log("focus out");
   interval_running = true;
-  setTimeout(function(){
+  window.setTimeout(function(){
     filter_by_title(txt_search.val(), true);
   }, 0);
   interval_running = false;
